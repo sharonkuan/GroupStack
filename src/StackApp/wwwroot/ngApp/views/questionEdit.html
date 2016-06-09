@@ -1,0 +1,18 @@
+﻿<h1>Edit Question</h1>
+<form ng-submit="controller.saveQuestion()">
+    <div>
+        <label>Title</label>
+        <input type="text" ng-model="controller.question.title" />
+    </div>
+    <div>
+        <label>Body</label>
+        <input type="text" ng-model="controller.question.body" />
+    </div>
+    <div>
+        <label>Category</label>
+        <input type="text" ng-model="controller.question.category" />
+    </div>
+    <input type="submit" value="Create" />
+    <input type="button" ng-click="controller.cancel()" value="Cancel" />
+
+</form>

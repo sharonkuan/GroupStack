@@ -14,6 +14,7 @@
 /// <reference path="ngapp/controllers/controllers.js" />
 /// <reference path="ngapp/controllers/questioncreatecontroller.js" />
 /// <reference path="ngapp/controllers/questiondetailcontroller.js" />
+/// <reference path="ngapp/controllers/questioneditcontroller.js" />
 /// <reference path="ngapp/controllers/questionscontroller.js" />
 /// <reference path="ngapp/services/questionservices.js" />
 /// <reference path="ngapp/services/services.js" />

@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using StackApp.Data;
+using StackApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using StackApp.Data;
-using Microsoft.EntityFrameworkCore;
-using StackApp.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,7 +33,10 @@ namespace StackApp.API
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
+            
             var question = _db.Questions.Where(q => q.Id == id).Include(q => q.Answers).FirstOrDefault();
+            question.Views++;
+            _db.SaveChanges();
             return Ok(question);
         }
 
@@ -55,6 +58,7 @@ namespace StackApp.API
                 questionToEdit.Votes = question.Votes;
                 questionToEdit.TimeCreated = DateTime.UtcNow;
                 questionToEdit.Category = question.Category;
+                _db.SaveChanges();
             }
 
             return Ok();
@@ -68,9 +72,12 @@ namespace StackApp.API
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-
+            var question = _db.Questions.Where(q => q.Id == id).Include(q => q.Answers).FirstOrDefault();
+            _db.Questions.Remove(question);
+            _db.SaveChanges();
+            return Ok();
         }
     }
 }

@@ -37,13 +37,25 @@ namespace StackApp {
                 controller: StackApp.Controllers.QuestionCreateController,
                 controllerAs: 'controller'
             })
-            .state('notFound', {
-                url: '/notFound',
-                templateUrl: '/ngApp/views/notFound.html'
+            .state("questionDelete", {
+                url: '/questions/delete/:id',
+                templateUrl: '/ngApp/views/questionDelete.html',
+                controller: StackApp.Controllers.QuestionEditController,
+                controllerAs: 'controller'
+            })
+            .state("questionEdit", {
+                url: '/questions/edit/:id',
+                templateUrl: '/ngApp/views/questionEdit.html',
+                controller: StackApp.Controllers.QuestionEditController,
+                controllerAs: 'controller'
             });
+        //    .state('notFound', {
+        //        url: '/notFound',
+        //        templateUrl: '/ngApp/views/notFound.html'
+        //    });
 
-        // Handle request for non-existent route
-        $urlRouterProvider.otherwise('/notFound');
+        //// Handle request for non-existent route
+        //$urlRouterProvider.otherwise('/notFound');
 
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
