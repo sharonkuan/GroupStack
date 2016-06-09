@@ -27,6 +27,14 @@
             });
         }
 
+        //this accepts the value set by the ng-click button value to pass to API controller 
+        voteQuestion(voteType) {
+            //alert(this.questionId);
+            this.questionServices.voteQuestion(this.questionId, voteType).then(() => {
+                this.getQuestion();
+            });
+        }
+
         cancel() {
             this.$state.go("questions");
         }

@@ -6,7 +6,7 @@
 
         constructor(private questionServices: StackApp.Services.QuestionServices,
         private $state : angular.ui.IStateService) {
-
+            debugger;
         }
 
         saveQuestion() {

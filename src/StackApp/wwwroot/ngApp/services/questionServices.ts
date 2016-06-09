@@ -6,19 +6,24 @@
         private answerResources;
 
         constructor($resource: angular.resource.IResourceService) {
-//by adding teh vot method, we can call it from below votQuestion
+            //by adding the vote method to $resource's 3rd parameter, 
+            //then we can call vote in the votQuestion method below
+            //adding custom method into the API Controller PUT call
             this.questionResources = $resource("/api/question/:id", null, {
                 vote: {
-                    method: "PUT"                    
+                    method: "PUT",
+                    url: "/api/question/:id"                  
                 }
             });
+
             this.answerResources = $resource("/api/answer/:id");
         }
 
         //from the server side will receive the questionId, and 1 or 0 
         //which will track accumulated votes 
         voteQuestion(questionId, voteValue) {
-            return this.questionResources.vote({id: questionId}, voteValue);
+            //alert(questionId);
+            return this.questionResources.vote({id: questionId}, voteValue).$promise;
         }
 
         getQuestions() {

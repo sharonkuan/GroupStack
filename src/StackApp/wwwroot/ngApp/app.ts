@@ -26,7 +26,7 @@ namespace StackApp {
                 controllerAs: 'controller'
             })
             .state("questionDetail", {
-                url: '/questions/:id',
+                url: '/questions/detail/:id',
                 templateUrl: '/ngApp/views/questionDetail.html',
                 controller: StackApp.Controllers.QuestionDetailController,
                 controllerAs: 'controller'

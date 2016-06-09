@@ -1,5 +1,7 @@
 ﻿<a href="/questions">Back to questions</a>
 
+<p>Vote count: {{controller.question.votes}}</p>
+<br />
 <h1>Question: {{controller.question.title}}</h1>
 <hr />
 <h3>{{controller.question.body}}</h3>
@@ -16,8 +18,7 @@
         <input type="button" ng-click="controller.cancel()" value="Cancel" />
     </div>
     <div>
-        <input type="button" value="Thumbs Up" />
-        <input type="button" value="Thumbs Down" />
-
+        <input type="button" value="Thumbs Up" ng-click="controller.voteQuestion(1)"/>
+        <input type="button" value="Thumbs Down" ng-click="controller.voteQuestion(0)" />
     </div>
 </form>

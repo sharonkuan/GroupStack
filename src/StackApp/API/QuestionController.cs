@@ -66,8 +66,20 @@ namespace StackApp.API
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody]int voteType)
         {
+            //voteType is thumbs up or down 1 = up, 0 = down
+            var question = _db.Questions.Where(q => q.Id == id).Include(q => q.Answers).FirstOrDefault();
+            if (voteType == 1)
+            {
+                question.Votes++;
+            }
+            else if (voteType == 0)
+            {
+                question.Votes--;
+            }
+            _db.SaveChanges();
+            return Ok(question);
         }
 
         // DELETE api/values/5
