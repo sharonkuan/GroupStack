@@ -1,0 +1,7 @@
+﻿<h1>Question: {{controller.question.title}}</h1>
+<hr />
+<h3>{{controller.question.body}}</h3>
+
+<ul>
+    <li ng-repeat="answer in controller.question.answers">{{answer.message}} {{answer.dateCreated | date: "longDate"}}</li>
+</ul>

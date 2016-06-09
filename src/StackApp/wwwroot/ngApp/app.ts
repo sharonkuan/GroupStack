@@ -19,6 +19,24 @@ namespace StackApp {
                 controller: StackApp.Controllers.AboutController,
                 controllerAs: 'controller'
             })
+            .state("questions", {
+                url: '/questions',
+                templateUrl: '/ngApp/views/questions.html',
+                controller: StackApp.Controllers.QuestionsController,
+                controllerAs: 'controller'
+            })
+            .state("questionDetail", {
+                url: '/questions/:id',
+                templateUrl: '/ngApp/views/questionDetail.html',
+                controller: StackApp.Controllers.QuestionDetailController,
+                controllerAs: 'controller'
+            })
+            .state("questionCreate", {
+                url: '/questions/create',
+                templateUrl: '/ngApp/views/questionCreate.html',
+                controller: StackApp.Controllers.QuestionCreateController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
